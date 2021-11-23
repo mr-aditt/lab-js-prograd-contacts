@@ -3,7 +3,6 @@ window.onload = ()=>fetchData();
 document.querySelector("#btnGet").addEventListener("click", contactBook);
 
 
-let person_details = [];
 let url = "https://jsonplaceholder.typicode.com/users";
 
 async function fetchData(){
@@ -30,9 +29,9 @@ async function fetchData(){
         
     });
     } catch (error) {
-        console.log(error);
+        console.log('Promise rejected.');
+        console.log(error.message);
     }
-    console.log(person_details);
 }
 
 
@@ -40,7 +39,7 @@ async function fetchData(){
 // async 
 function contactBook(){
 
-    // let promise = new Promise(() => {
+    let promise = new Promise(() => {
         
         let subtitle = document.createElement("h2");
         subtitle.innerHTML = "List of Users";
@@ -83,6 +82,6 @@ function contactBook(){
             user.appendChild(zipcode);
             header.appendChild(user);
         }
-    // }).then("Promise Fulfilled")
-    // .catch("Error Occured");
+    }).then("Promise Fulfilled")
+    .catch("Error Occured");
 }
